@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<diff>
+  <add sel="//set_value[@name='$debug']" pos="after">
+    <set_value name="$chanceToImprove" exact="20"/>
+    <set_value name="$jobFitting" exact="true"/>
+  </add>
+</diff>

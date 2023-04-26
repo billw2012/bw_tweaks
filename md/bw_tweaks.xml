@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mdscript name="BWTweaks"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../extracted/libraries/md.xsd">
+  <cues>
+    <cue name="OnLuaLoaderReady">
+      <conditions>
+        <event_ui_triggered screen="'Lua_Loader'" control="'Ready'"/>
+      </conditions>
+      <actions>
+        <!-- <raise_lua_event name="'Lua_Loader.Load'" param="'extensions.BWTweaks.ui.BWTweaks'"/> -->
+      </actions>
+    </cue>
+
+    <!-- <cue name="OnLuaLoaderReadyCompleted">
+      <conditions>
+        <event_cue_completed cue="OnLuaLoaderReady"/>
+      </conditions>
+      <actions>
+        <reset_cue cue="OnLuaLoaderReady"/>
+        <reset_cue cue="this"/>
+      </actions>
+    </cue>
+    <cue name="HotKeyAPI_OnReloaded">
+      <conditions>
+        <event_cue_signalled cue="md.Hotkey_API.Reloaded" />
+      </conditions>
+      <actions>
+        <debug_text text="'event.name: ' + event.name" />
+        <signal_cue_instantly 
+					cue = "md.Hotkey_API.Register_Action" param="table[
+						$id = 'kAutoCam_hotkey',
+						$onRelease = Hotkey_Activate,
+						$name = {13113, 901},
+						$description = {13113, 901},
+						$contexts = ['flying', 'walking']
+					]" />
+        <reset_cue cue="this" />
+      </actions>
+    </cue> -->
+
+    <!-- doesn't really make any difference for perf, but improves AI movement 
+    class="[class.ship_xl, class.ship_l, class.ship_m, class.ship_s, class.ship_xs]" 
+    <set_avoid_collisions object="$localships.{$i}" bigobjects="false" smallobjects="false" />
+    -->
+
+    <!-- 
+    <cue name="DisableCollision" checkinterval="15s" instantiate="true">
+      <actions>
+        <find_ship name="$localships" space="player.sector" class="[class.ship_xl, class.ship_l]" multiple="true">
+          <match_distance object="player.ship" max="100km"/>
+        </find_ship>
+        <do_all exact="$localships.count" counter="$i">
+          <do_all exact="$localships.count - $i - 1" counter="$j">
+            <disable_collisions_between object="$localships.{$i}" target="$localships.{$i + $j + 1}"/>
+          </do_all>
+        </do_all>
+        <debug_text text="'Disabled collision between ' + $localships.count + ' ships near player'"/>
+        <reset_cue cue="this"/>
+      </actions>
+    </cue>
+    -->
+
+    
+    <!-- could improve large battle perf, needs a/b testing
+    <cue name="DisableObjects" checkinterval="5s" instantiate="true">
+      <actions>
+        <add_to_group groupname="md.$BWDisabledShipsList" object="player.ship" />
+        <find_ship name="$smallships" space="player.sector" 
+            primarypurpose="purpose.fight" 
+            docked="false" 
+            excluded="md.$BWDisabledShipsList" 
+            class="[class.ship_s, class.ship_xs]" 
+            sortbydistanceto="player.ship"
+            sortdescending="true"
+            multiple="true">
+          <match_distance object="player.ship" max="100km"/>
+        </find_ship>
+        <remove_from_group group="md.$BWDisabledShipsList" object="player.ship" />
+
+        <do_if value="$smallships.count ge 200">
+           disable first n - 200 ships from the player 
+          <do_all exact="$smallships.count - 200" counter="$i" >
+            <set_object_active object="$smallships.{$i}" activate="false"/>
+            <add_to_group groupname="md.$BWDisabledShipsList" object="$smallships.{$i}" />
+          </do_all>
+          <debug_text text="'Deactivated  ' + $smallships.count + ' ships near player'"/>
+        </do_if>
+        <do_elseif value="$smallships.count le 150 and $smallships.count gt 0">
+           re-enable closest 50 ships from the disabled ships list 
+          <sort_group group="md.$BWDisabledShipsList" sortbydistanceto="player.ship" />
+          <set_value name="$enablecount" exact="50"/>
+          <do_if value="md.$BWDisabledShipsList.count lt 50">
+            <set_value name="$enablecount" exact="md.$BWDisabledShipsList.count"/>
+          </do_if>
+          <do_all exact="$enablecount" counter="$i" >
+            <set_object_active object="md.$BWDisabledShipsList.{1}" activate="true"/>
+            <remove_from_group group="md.$BWDisabledShipsList" object="md.$BWDisabledShipsList.{1}" />
+          </do_all>
+          <debug_text text="'Activated  ' + $enablecount + ' ships near player'"/>
+        </do_elseif>
+        <reset_cue cue="this"/>
+      </actions>
+    </cue>
+    -->
+  </cues>
+</mdscript>

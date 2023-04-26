@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<diff>
+  <replace sel="//set_value[@name='$debugChance']">
+    <set_value name="$debugChance" exact="100"/>
+  </replace>
+  <add sel="//cue[@name='RegisterMenu']/actions/signal_cue_instantly" pos="before">
+    <set_value name="md.MCT_Config.Vault.$debugChance" exact="100"/>
+  </add>
+</diff>

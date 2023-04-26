@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<diff>
+  <!-- <add sel="//attention/actions/label[@name='fight']" pos="before">
+    <set_avoid_collisions object="this.ship" bigobjects="false" smallobjects="false" />
+  </add> -->
+</diff>

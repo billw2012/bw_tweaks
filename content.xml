@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<content id="bw_tweaks" name="BW Tweaks" author="BW" version="100" date="2023-04-25" save="false" sync="false" enabled="true" description="My own tweaks to settings for various other mods">
+  <dependency id="WarehouseFleets" optional="true"/>
+  <dependency id="LearnAllTheThings" optional="true"/>
+  <dependency id="EnhancedBailing" optional="true"/>
+  <dependency id="ws_2229061492" optional="true"/> <!-- ship variation expansion -->
+  <dependency id="CustomTabs" optional="true"/>
+</content>

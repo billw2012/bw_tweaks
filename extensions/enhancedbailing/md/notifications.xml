@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<diff>
+  <replace sel="//do_if[@value='if not $testcheat? then (((not $target.maxshield) or ($target.shieldpercentage lt 20)) and ($target.hullpercentage lt 75) and not $target.assigneddock and (not $target.iscapitalship or $target.people.count)) else true']/@value">
+    if not $testcheat? then (((not $target.maxshield) or ($target.shieldpercentage lt 20)) and ($target.hullpercentage lt 75) and not $target.dock and (not $target.iscapitalship or $target.people.count)) else true
+  </replace>
+</diff>

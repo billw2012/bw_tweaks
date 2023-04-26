@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<diff>
+  <!-- <replace sel="/aiscript/attention/actions/do_while/wait">
+    <wait min="120s" max="180s"/>
+  </replace> -->
+</diff>
